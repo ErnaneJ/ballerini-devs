@@ -1,38 +1,18 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;600&family=Overpass:wght@100;300;400;600&display=swap');
+
+:root{
+  --bg-color: #1D1D1D;
+  --clear-detail: #fff;
+  --primary-color: #27AE60;
+  --color-letter: #A9A9A9;
+  --danger-color: #F42626;
+  --edit-color: #DBB801;
+  --opaque-white: #F9F9F9;
+
+  --font-maven: 'Maven Pro', sans-serif;
+  --font-overpass: 'Overpass', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+*{margin: 0; padding: 0; box-sizing: border-box;}
+body{background-color: var(--bg-color); color: var(--color-letter);}
+a{text-decoration: none; color: var(--color-letter);}
