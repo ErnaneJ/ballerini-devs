@@ -1,9 +1,12 @@
-import { Link } from "react-router-dom";
+import Header from '../../components/header';
+import Main from '../../components/Main';
 
 const Devs = () => {
   return <>
-    <h1>Devs</h1>
-    <Link to="/">Home</Link>
+    <Header isNotLanding={true}/>
+    <Main>
+      {/* <DevListing devs={[]}/> */}
+    </Main>
   </>;
 };
 

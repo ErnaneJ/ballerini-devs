@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
+import Header from '../../components/header';
+import Main from '../../components/Main';
+import ContentLanding from './components/ContentLanding';
+import './landingContent.css';
 
 const Home = () => {
   return <>
-    <h1>Home</h1>
-    <Link to="/devs">Devs</Link>
+    <Header isNotLanding={false}/>
+    <Main>
+      <ContentLanding/>
+    </Main>
   </>;
 };
 
