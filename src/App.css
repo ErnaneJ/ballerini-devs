@@ -4,10 +4,13 @@
   --bg-color: #1D1D1D;
   --clear-detail: #fff;
   --primary-color: #27AE60;
-  --color-letter: #A9A9A9;
+  --color-letter: #686868;
   --danger-color: #F42626;
-  --edit-color: #DBB801;
+  --warning-color: #DBB801;
   --opaque-white: #F9F9F9;
+  --bg-container: #A9A9A9;
+  --bg-modal: rgb(51,51,51,.7);
+  --bg-modal-container: rgb(34,33,33,.95);
 
   --font-maven: 'Maven Pro', sans-serif;
   --font-overpass: 'Overpass', sans-serif;
@@ -19,10 +22,42 @@ body{background-color: var(--bg-color); color: var(--color-letter); width: 100%;
 a{text-decoration: none; color: var(--color-letter);}
 input{border:none; outline: none;}
 header{width: 100%; padding: 1rem; display: flex; align-items: center; justify-content: center;}
-main{display:flex;align-items: center;justify-content: center;width: 100%; height: 100%; position: relative;}
-
+main{position:relative; display:flex;align-items: center;justify-content: center;width: 100%; height: calc(100% - 75px); position: relative;}
+button{outline: none; border: none;}
 /* ----------| shared classes |---------- */
-.container{width: 100%; max-width: 1200px;}
+.container{width: 100%; max-width: 1200px; height: 100%;}
+.button{
+  padding: .5rem 1rem;
+  border-radius: 1rem;
+  font-size: .75rem;
+  color: var(--opaque-white);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+  transition: all ease .3s;
+  cursor: pointer;
+  opacity: .9;
+  font-family: var(--font-maven);
+  font-weight: 600;
+}
+.button:hover{
+  transform: translateY(-.3rem);
+  opacity: 1;
+}
+.button__success{
+  background-color: var(--primary-color);
+}
+.button__warning{
+  background-color: var(--warning-color);
+}
+.button__danger{
+  background-color: var(--danger-color);
+}
+.button.add_new_dev{
+  font-weight: bold;
+  font-size: .85rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 
 /* ---------| Header |----------- */
 .header__container{
@@ -51,6 +86,7 @@ main{display:flex;align-items: center;justify-content: center;width: 100%; heigh
   font-family: var(--font-maven);
   font-size: 25.64px;
 }
+.header__logo img{cursor: pointer;}
 .header__seachable_devs{
   color: var(--color-letter);
   background-color: var(--opaque-white);
@@ -69,12 +105,72 @@ main{display:flex;align-items: center;justify-content: center;width: 100%; heigh
   font-weight: 600;
   font-size: .85rem;
 }
+.header__social_icons.mobile{display: none;}
 @media (max-width: 980px){
   .header__container{
-    flex-direction: column-reverse;
     gap: .25rem;
   }
-  .header__icons{
-    font-size: 1rem;
+  .header__social_icons{
+    display: none;
+  }
+  .h_m{display:none}
+  .header__social_icons.mobile{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: -5rem;
+    transition: all ease .3s;
+  }
+  .header__logo{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }.header__logo:hover .header__social_icons.mobile{
+    left: 0;
   }
 }
+
+/* Modal */
+.modal__background{
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  z-index: 9;
+  background-color: var(--bg-modal);
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.modal__container{
+  background-color: var(--bg-modal-container);
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+}
+.modal__header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+.modal__title{
+  font-family: var(--font-maven);
+  color: var(--opaque-white);
+  margin-bottom: .5rem; 
+}
+.modal__description{
+  font-family: var(--font-maven);
+  color: var(--opaque-white); 
+  max-width: 90%;
+  text-align: center;
+  font-size: .95rem;
+}
+.modal__footer{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+.modal__footer .button{font-weight: 600;}

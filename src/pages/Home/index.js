@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Header from '../../components/header';
 import Main from '../../components/Main';
 import ContentLanding from './components/ContentLanding';
@@ -13,4 +12,4 @@ const Home = () => {
   </>;
 };
 
-export default Home;
+export default Home; 
