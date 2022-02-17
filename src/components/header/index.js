@@ -10,7 +10,7 @@ const Header = ({devs, isNotLanding, setFilteredDevs}) => {
   const filterDevs = (e) => {
     let term = e.target.value;
     if(term === '') setFilteredDevs(devs);
-    let filteredDevs = devs.filter(dev => dev.name.toLowerCase().includes(term.toLowerCase()));
+    let filteredDevs = devs.filter(dev => dev.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(term.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")));
     setFilteredDevs(filteredDevs);
   }
   return <header>

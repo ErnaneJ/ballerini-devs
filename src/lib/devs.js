@@ -1,9 +1,10 @@
-export default [
+const defaultAvatar = "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-social-media-user-vector-image-icon-default-avatar-profile-icon-social-media-user-vector-image-209162840.jpg";
+const devs =  [
   {
     id: 0,
     name: "Ernane Ferreira", 
     description: "Descrição teste", 
-    avatar: "https://imagens.brasil.elpais.com/resizer/AXY-znKLjN2eo__LAuOLMJSSPFA=/1960x0/arc-anglerfish-eu-central-1-prod-prisa.s3.amazonaws.com/public/6TE7TL7D4YWZFV2TFRSGNGN6JE.jpg", 
+    avatar: defaultAvatar, 
     office: 'Desenvolvedor',
     nickGithub: 'ErnaneJ',
     linkedin: '',
@@ -13,7 +14,7 @@ export default [
     id: 1,
     name: "José Ferreira", 
     description: "Descrição teste", 
-    avatar: "https://imagens.brasil.elpais.com/resizer/AXY-znKLjN2eo__LAuOLMJSSPFA=/1960x0/arc-anglerfish-eu-central-1-prod-prisa.s3.amazonaws.com/public/6TE7TL7D4YWZFV2TFRSGNGN6JE.jpg", 
+    avatar: defaultAvatar, 
     office: 'Desenvolvedor',
     nickGithub: 'ErnaneJ',
     linkedin: '',
@@ -22,10 +23,22 @@ export default [
     id: 2,
     name: "José da silva", 
     description: "Descrição teste", 
-    avatar: "https://imagens.brasil.elpais.com/resizer/AXY-znKLjN2eo__LAuOLMJSSPFA=/1960x0/arc-anglerfish-eu-central-1-prod-prisa.s3.amazonaws.com/public/6TE7TL7D4YWZFV2TFRSGNGN6JE.jpg", 
+    avatar: defaultAvatar, 
     office: 'Desenvolvedor',
     nickGithub: 'ErnaneJ',
     linkedin: '',
     website: '',
   }
 ];
+
+const devStructure = {
+  name: "", 
+  description: "", 
+  avatar: defaultAvatar, 
+  office: '',
+  nickGithub: '',
+  linkedin: '',
+  website: '',
+}
+
+module.exports = {devs, devStructure}

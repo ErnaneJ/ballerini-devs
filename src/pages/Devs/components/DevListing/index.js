@@ -4,19 +4,12 @@ import { Navigation } from "swiper";
 import DevCard from '../DevCard';
 import DevForm from '../DevForm';
 import Modal from '../../../../components/Modal';
-import { FadeInDownContent, FadeInUpContent } from './animations';
-import 'swiper/css';
+import { FadeInDownContent, FadeInUpContent, FadeInContent } from './animations';
+import { devStructure } from '../../../../lib/devs'
+import "swiper/css";
 import "swiper/css/navigation";
 
-const devStructure = {
-  name: "", 
-  description: "", 
-  avatar: "https://imagens.brasil.elpais.com/resizer/AXY-znKLjN2eo__LAuOLMJSSPFA=/1960x0/arc-anglerfish-eu-central-1-prod-prisa.s3.amazonaws.com/public/6TE7TL7D4YWZFV2TFRSGNGN6JE.jpg", 
-  office: '',
-  nickGithub: '',
-  linkedin: '',
-  website: '',
-}
+
 const DevListing = ({devs}) => {
   const [statusModal, setStatusModal ] = useState(false);
   const [newDev, setNewDev ] = useState(devStructure);
@@ -37,22 +30,20 @@ const DevListing = ({devs}) => {
         grabCursor={true}
         centeredSlides={true}
         initialSlide={devs.length >= 1 ? 1 : 0}
-        loop={true}
+        loop={false}
         breakpoints={{
-          768: {
-            slidesPerView: devs.length > 3 ? 3 : devs.length,
-            spaceBetween: 0,
-          }
+          768: { slidesPerView: devs.length > 3 ? 3 : devs.length, spaceBetween: 0, } 
         }}
         effect='fade'
         fadeEffect={{crossFade: true}}
         >
           {devs.map((dev, i) => (
             <SwiperSlide key={i}>
-              <DevCard dev={dev} setCurrentEditDev={setCurrentEditDev} setStatusModalEdit={setStatusModalEdit} setStatusModalDelete={setStatusModalDelete}/>
+              <FadeInContent>
+                <DevCard dev={dev} setCurrentEditDev={setCurrentEditDev} setStatusModalEdit={setStatusModalEdit} setStatusModalDelete={setStatusModalDelete}/>
+              </FadeInContent>
             </SwiperSlide>
           ))}
-          <SwiperSlide></SwiperSlide>
       </Swiper>
     </FadeInUpContent>
     <FadeInUpContent className="main__footer">
@@ -80,7 +71,7 @@ const DevListing = ({devs}) => {
       actionSave={() => alert('Editado')}
       modalTitle="Editar Desenvolvedor"
       modalDescription="Preencha corretamente os dados do 
-                        formulário para ditar este desenvolvedor."
+                        formulário para editar este desenvolvedor."
       >
       <DevForm dev={currentEditDev} updateDev={setCurrentEditDev} isNewDev={false}/>
    </Modal>
