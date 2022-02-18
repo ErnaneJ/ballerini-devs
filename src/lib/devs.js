@@ -1,6 +1,14 @@
 const defaultAvatar = "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-social-media-user-vector-image-icon-default-avatar-profile-icon-social-media-user-vector-image-209162840.jpg";
-
-const getAllDevs = async (applyDevs, setLoading=null) => {
+export const devStructure = {
+  "avatar": defaultAvatar,
+  "name": "",
+  "description": "",
+  "office": "",
+  "nick_github": "",
+  "linkedin": "",
+  "website": "",
+}
+export const getAllDevs = async (applyDevs, setLoading=null) => {
   if(setLoading) setLoading(true)
   return await fetch('https://api-balle-dev.herokuapp.com/dev')
   .then(response => response.json())
@@ -10,7 +18,7 @@ const getAllDevs = async (applyDevs, setLoading=null) => {
   })
 };
 
-const addNewDev = async (dev, updateDevs) => {
+export const addNewDev = async (dev, updateDevs) => {
   return await fetch('https://api-balle-dev.herokuapp.com/dev', {
     method: 'POST',
     headers: {
@@ -24,7 +32,7 @@ const addNewDev = async (dev, updateDevs) => {
   })
 };
 
-const deleteDev = async (dev, updateDevs) => {
+export const deleteDev = async (dev, updateDevs) => {
   return await fetch(`https://api-balle-dev.herokuapp.com/dev/${dev.id}`, {
     method: 'DELETE',
     headers: {
@@ -37,7 +45,7 @@ const deleteDev = async (dev, updateDevs) => {
   })
 };
 
-const updateDev = async (dev, updateDevs) => {
+export const updateDev = async (dev, updateDevs) => {
   return await fetch(`https://api-balle-dev.herokuapp.com/dev/${dev.id}`, {
     method: 'PUT',
     headers: {
@@ -50,17 +58,8 @@ const updateDev = async (dev, updateDevs) => {
     getAllDevs(updateDevs);
   })
 };
-const devStructure = {
-  "avatar": defaultAvatar,
-  "name": "",
-  "description": "",
-  "office": "",
-  "nick_github": "",
-  "linkedin": "",
-  "website": "",
-}
 
-const loadUserToGithub = async (dev, updateDev) => {
+export const loadUserToGithub = async (dev, updateDev) => {
   const resp = await fetch(`https://api.github.com/users/${dev.nick_github}`);
   const respData = await resp.json();
   updateDev({...dev, 
@@ -70,5 +69,3 @@ const loadUserToGithub = async (dev, updateDev) => {
     website: respData.blog
   });
 }
-
-module.exports = {getAllDevs, deleteDev, loadUserToGithub, updateDev, addNewDev, devStructure}
