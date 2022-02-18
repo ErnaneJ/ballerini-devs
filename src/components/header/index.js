@@ -13,26 +13,32 @@ const Header = ({devs, isNotLanding, setFilteredDevs}) => {
     let filteredDevs = devs.filter(dev => dev.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(term.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")));
     setFilteredDevs(filteredDevs);
   }
+  const hanndleLogo = () => {
+    if(window.innerWidth >= 980) window.location="/";
+  }
   return <header>
     <FadeInDownContent className="container header__container">
       <div className="header__social_icons">
         {icons.map((icon, i) => (
-          <a target="_blank" rel="noopener" href={icon.link} key={i}>
+          <a target="_blank" rel="noreferrer" href={icon.link} key={i}>
             <i className={`fa-brands fa-${icon.icon} header__icons`}></i>
           </a>  
         ))}
       </div>
       <div className="header__logo">
-        <img alt=" " src={LogoBalleriniDevs} alt="Ballerini Devs Logo" onClick={() => window.location="/"}/>
-        <Link to='/' className='h_m'>
+        <img src={LogoBalleriniDevs} alt="Ballerini Devs Logo" onClick={hanndleLogo}/>
+        <Link rel="noreferrer" to='/' className='h_m'>
           Ballerini Devs
         </Link>
         <div className="header__social_icons mobile">
-        {icons.map((icon, i) => (
-          <Link to={icon.link} key={i}>
-            <i className={`fa-brands fa-${icon.icon} header__icons`}></i>
-          </Link>  
-        ))}
+          <Link rel="noreferrer" to="/">
+            <i className="fa-solid fa-house-chimney header__icons"></i>
+          </Link> 
+          {icons.map((icon, i) => (
+            <a rel="noreferrer" target="_blank" href={icon.link} key={i}>
+              <i className={`fa-brands fa-${icon.icon} header__icons`}></i>
+            </a>  
+          ))}
       </div>
       </div>
       {isNotLanding ?

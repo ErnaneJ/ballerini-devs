@@ -247,11 +247,13 @@
   right:0;
   top: -30%;
   transform: rotate(180deg);
+  z-index: -1;
 }
 .devs__blobs_botton{
   position: absolute;
   left: -10%;
   bottom: -20%;
+  z-index: -1;
 }
 
 @media (max-width: 980px){

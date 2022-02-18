@@ -63,9 +63,9 @@ export const loadUserToGithub = async (dev, updateDev) => {
   const resp = await fetch(`${endpointGithub}/users/${dev.nick_github}`);
   const respData = await resp.json();
   updateDev({...dev, 
-    avatar: respData.avatar_url,
-    description: respData.bio,
-    name: respData.name,
-    website: respData.blog
+    avatar: respData.avatar_url ?? '',
+    description: respData.bio ?? '',
+    name: respData.name ?? '',
+    website: respData.blog ?? ''
   });
 }

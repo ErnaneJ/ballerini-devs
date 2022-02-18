@@ -28,7 +28,7 @@ const DevListing = ({devs, updateDevs}) => {
           spaceBetween={0}
           slidesPerView={1}
           modules={[Navigation]}
-          navigation={devs.length >= 3 ? true : false}
+          navigation={devs.length >= 2 ? true : false}
           grabCursor={true}
           centeredSlides={true}
           initialSlide={0}

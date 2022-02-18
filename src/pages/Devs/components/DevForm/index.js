@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {loadUserToGithub} from '../../../../lib/devs';
 
+
 const DevForm = ({editDevs, dev, updateDev, isNewDev}) => {
   const [invalidGithubNick, setInvalidGithubNick ] = useState(false);
   const update = (e, key) => {
@@ -23,8 +24,8 @@ const DevForm = ({editDevs, dev, updateDev, isNewDev}) => {
     {name: 'Description', key: 'description'},
     {name: 'Cargo', key: 'office'},
     {name: 'Usuário no Github', key: 'nick_github'},
-    {name: 'Linkedin', key: 'linkedin'},
-    {name: 'Website', key: 'website'},
+    {name: 'Linkedin (URL)', key: 'linkedin'},
+    {name: 'Website (URL)', key: 'website'},
   ]
   return <section className="dev__form">
     <div className="form__avatar">
