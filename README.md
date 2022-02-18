@@ -44,7 +44,7 @@ Aplicação referente ao desafio da tecnologia da semana - [React](https://react
  - [x] Integração e consumo de informações pela [API do Github](https://api.github.com/) para coleta, se desejado pelo usuário, de dados básicos para o cadastro.
 
 ## 💻 Acesse
-<a target="_blank" rel="noopener" href="ballerinidevs.netlify.app">Clique aqui</a> para acessar a aplicação.
+<a target="_blank" rel="noopener" href="https://ballerinidevs.netlify.app/">Clique aqui</a> para acessar a aplicação.
 
 ## 💡 Use
 
