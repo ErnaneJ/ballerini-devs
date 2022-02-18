@@ -15,7 +15,7 @@ export const getAllDevs = async (applyDevs, setLoading=null) => {
   .then(data => {
     applyDevs(data)
     if(setLoading) setLoading(false)
-  })
+  }).catch(e => console.error(e))
 };
 
 export const addNewDev = async (dev, updateDevs) => {
@@ -29,7 +29,7 @@ export const addNewDev = async (dev, updateDevs) => {
   .then(data => {
     console.log(data);
     getAllDevs(updateDevs);
-  })
+  }).catch(e => console.error(e))
 };
 
 export const deleteDev = async (dev, updateDevs) => {
@@ -42,7 +42,7 @@ export const deleteDev = async (dev, updateDevs) => {
   .then(data => {
     console.log(data);
     getAllDevs(updateDevs);
-  })
+  }).catch(e => console.error(e))
 };
 
 export const updateDev = async (dev, updateDevs) => {
@@ -56,7 +56,7 @@ export const updateDev = async (dev, updateDevs) => {
   .then(data => {
     console.log(data);
     getAllDevs(updateDevs);
-  })
+  }).catch(e => console.error(e))
 };
 
 export const loadUserToGithub = async (dev, updateDev) => {
