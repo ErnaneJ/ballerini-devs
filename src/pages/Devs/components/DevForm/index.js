@@ -28,7 +28,7 @@ const DevForm = ({editDevs, dev, updateDev, isNewDev}) => {
   ]
   return <section className="dev__form">
     <div className="form__avatar">
-      <img className="form__image" width="150" heigth="150" src={dev.avatar}/>
+      <img alt=" " className="form__image" width="150" heigth="150" src={dev.avatar}/>
       <div className="form__input_group">
         <label className="form__label" htmlFor={`avatar--1`}>Avatar</label>
         <input

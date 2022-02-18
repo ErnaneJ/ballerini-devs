@@ -27,8 +27,8 @@ const Devs = () => {
     </Main>
 
     {/* Blobs */}
-    <img src={BlobsCenter} className="devs__blobs_top"/>
-    <img src={BlobsBottom} className="devs__blobs_botton"/>
+    <img alt=" " src={BlobsCenter} className="devs__blobs_top"/>
+    <img alt=" " src={BlobsBottom} className="devs__blobs_botton"/>
   </>;
 };
 

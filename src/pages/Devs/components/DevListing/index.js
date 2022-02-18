@@ -51,7 +51,7 @@ const DevListing = ({devs, updateDevs}) => {
     }
     <FadeInUpContent className="main__footer">
       <p>
-        Developed with ❤️ by <a href="https://www.ernane.dev" target="_blank">Ernane Ferreira</a>.  
+        Developed with ❤️ by <a rel="noopener" href="https://www.ernane.dev" target="_blank">Ernane Ferreira</a>.  
       </p>
     </FadeInUpContent>
 

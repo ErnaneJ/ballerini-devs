@@ -1,19 +1,19 @@
 <h1 align="center">
-   <img src=".github/logo.png" alt="Logo do projeto" width="100%"/>
+   <img alt=" " src=".github/logo.png" alt="Logo do projeto" width="100%"/>
 </h1>
 
 <div align="center">
-  <a href="#-Tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-Projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-Acesse">Acesse</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-Use">Use</a>&nbsp;&nbsp;&nbsp;
+  <a rel="noopener" href="#-Tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a rel="noopener" href="#-Projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a rel="noopener" href="#-Acesse">Acesse</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a rel="noopener" href="#-Use">Use</a>&nbsp;&nbsp;&nbsp;
 </div>
 
 <br>
 
 <p align="center">
   <p align="center">
-  <img alt="landing page" src=".github/preview.png" width="100%">
+  <img alt=" " alt="landing page" src=".github/preview.png" width="100%">
 </p>
 
 </p>
@@ -44,7 +44,7 @@ Aplicação referente ao desafio da tecnologia da semana - [React](https://react
  - [x] Integração e consumo de informações pela [API do Github](https://api.github.com/) para coleta, se desejado pelo usuário, de dados básicos para o cadastro.
 
 ## 💻 Acesse
-<a target="_blank" href="ballerinidevs.netlify.app">Clique aqui</a> para acessar a aplicação.
+<a target="_blank" rel="noopener" href="ballerinidevs.netlify.app">Clique aqui</a> para acessar a aplicação.
 
 ## 💡 Use
 
@@ -70,5 +70,5 @@ $ npm start
 ---
 
 <div align="center">
-  Desenvolvido com ❤ por <a target="_blank" href="https://www.ernane.dev/">Ernane Ferreira</a>. 👋🏻
+  Desenvolvido com ❤ por <a target="_blank" rel="noopener" href="https://www.ernane.dev/">Ernane Ferreira</a>. 👋🏻
 </div>

@@ -4,7 +4,7 @@ const DevCard = ({dev, setStatusModalEdit, setCurrentDeleteDev, setStatusModalDe
   return <div className="card__container">
     <div className="card">
       <div className="card__avatar">
-        <img width="150" heigth="150" src={dev.avatar ?? defaultAvatar}/>
+        <img alt=" " width="150" heigth="150" src={dev.avatar ?? defaultAvatar}/>
       </div>
       <div className="card__info">
         {dev.name ? <h2 className="card__name">{dev.name}</h2> : <></>}
@@ -13,17 +13,17 @@ const DevCard = ({dev, setStatusModalEdit, setCurrentDeleteDev, setStatusModalDe
       </div>
       <div className="card__actions">
         <div className="card__links">
-            <a href={`https://github.com/${dev.nick_github}`} target="_blank">
+            <a rel="noopener" href={`https://github.com/${dev.nick_github}`} target="_blank">
               <i className="fa-brands fa-github card__link_icon"></i>
             </a>
-            <a href={dev.linkedin} target="_blank">
+            <a rel="noopener" href={dev.linkedin} target="_blank">
               <i className="fa-brands fa-linkedin card__link_icon"></i>
             </a>
-            <a href={dev.website} target="_blank">
+            <a rel="noopener" href={dev.website} target="_blank">
               <i className="fa-solid fa-link card__link_icon"></i>
             </a>
         </div>
-        <a href={dev.website ?? `https://github.com/${dev.nick_github}`} target="_blank" className="button button__success">Ver Mais</a>
+        <a rel="noopener" href={dev.website ?? `https://github.com/${dev.nick_github}`} target="_blank" className="button button__success">Ver Mais</a>
       </div>
     </div>
     <div className="container__actions">

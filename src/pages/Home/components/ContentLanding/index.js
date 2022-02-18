@@ -27,12 +27,12 @@ const LandingContent = () => {
         </FadeInButton>
       </div>
       <div className="ladding__right_content">
-        <img src={Programmer_main} width="650" height="650" alt="Programador Main image Landing Page"/>
+        <img alt=" " src={Programmer_main} width="650" height="650" alt="Programador Main image Landing Page"/>
       </div>
     </section>
     {/* Blobs */}
-    <img src={BlobsCenter} className="ladding__blobs_center"/>
-    <img src={BlobsBottom} className="ladding__blobs_botton"/>
+    <img alt=" " src={BlobsCenter} className="ladding__blobs_center"/>
+    <img alt=" " src={BlobsBottom} className="ladding__blobs_botton"/>
   </>;
 };
 

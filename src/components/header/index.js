@@ -17,13 +17,13 @@ const Header = ({devs, isNotLanding, setFilteredDevs}) => {
     <FadeInDownContent className="container header__container">
       <div className="header__social_icons">
         {icons.map((icon, i) => (
-          <a target="_blank" href={icon.link} key={i}>
+          <a target="_blank" rel="noopener" href={icon.link} key={i}>
             <i className={`fa-brands fa-${icon.icon} header__icons`}></i>
           </a>  
         ))}
       </div>
       <div className="header__logo">
-        <img src={LogoBalleriniDevs} alt="Ballerini Devs Logo" onClick={() => window.location="/"}/>
+        <img alt=" " src={LogoBalleriniDevs} alt="Ballerini Devs Logo" onClick={() => window.location="/"}/>
         <Link to='/' className='h_m'>
           Ballerini Devs
         </Link>
