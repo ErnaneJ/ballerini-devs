@@ -18,7 +18,7 @@ const LandingContent = () => {
         </FadeInTitle>
         <FadeInDescription>
           <p className="landding__description">
-            Não importa se front ou back end,  fazer networking e muito importante. 
+            Não importa se front ou back-end, fazer networking é muito importante. 
             Faça parte da maior comunidade de desenvolvedores brasileiros.
           </p>
         </FadeInDescription>
