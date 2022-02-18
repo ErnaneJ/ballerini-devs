@@ -1,17 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../../components/header';
 import Main from '../../components/Main';
 import DevListing from './components/DevListing';
+import Loading from './components/Loading';
+import BlobsCenter from '../../assets/images/blobs_meio.svg';
+import BlobsBottom from '../../assets/images/blobs_baixo.svg';
 import './devlisting.css';
-import {devs} from '../../lib/devs';
+
+import {getAllDevs} from '../../lib/devs';
 
 const Devs = () => {
-  const [filteredDevs, setFilteredDevs ] = useState(devs);
+  const [ loading, setLoading ] = useState(false);
+  const [devs, setDevs ] = useState([]);
+  const [filteredDevs, setFilteredDevs ] = useState([]);
+
+  useEffect(() => getAllDevs(setDevs, setLoading), []);
+  useEffect(() => setFilteredDevs(devs), [devs]);
+
   return <>
     <Header isNotLanding={true} devs={devs} setFilteredDevs={setFilteredDevs}/>
     <Main>
-      <DevListing devs={filteredDevs}/>
+      {loading ? 
+      <Loading status={loading}/>
+      :<DevListing devs={filteredDevs} updateDevs={setDevs}/>
+    }
     </Main>
+
+    {/* Blobs */}
+    <img src={BlobsCenter} className="devs__blobs_top"/>
+    <img src={BlobsBottom} className="devs__blobs_botton"/>
   </>;
 };
 

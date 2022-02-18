@@ -2,9 +2,9 @@ import LogoBalleriniDevs from '../../assets/images/logo_ballerini_devs.svg';
 import { FadeInDownContent } from './animations';
 import { Link } from "react-router-dom";
 const icons = [
-  {name: 'Linkedin', icon: 'linkedin', link: '/'},
-  {name: 'Facebook', icon: 'facebook', link: '/'},
-  {name: 'Discord', icon: 'discord', link: '/'}
+  {name: 'Linkedin', icon: 'linkedin', link: 'https://www.linkedin.com/in/ernane'},
+  {name: 'Facebook', icon: 'facebook', link: 'https://www.facebook.com'},
+  {name: 'Discord', icon: 'discord', link: 'https://discord.gg/ballerini'}
 ]
 const Header = ({devs, isNotLanding, setFilteredDevs}) => {
   const filterDevs = (e) => {
@@ -17,13 +17,13 @@ const Header = ({devs, isNotLanding, setFilteredDevs}) => {
     <FadeInDownContent className="container header__container">
       <div className="header__social_icons">
         {icons.map((icon, i) => (
-          <Link to={icon.link} key={i}>
+          <a target="_blank" href={icon.link} key={i}>
             <i className={`fa-brands fa-${icon.icon} header__icons`}></i>
-          </Link>  
+          </a>  
         ))}
       </div>
       <div className="header__logo">
-        <img src={LogoBalleriniDevs} alt="Ballerini Devs Logo"/>
+        <img src={LogoBalleriniDevs} alt="Ballerini Devs Logo" onClick={() => window.location="/"}/>
         <Link to='/' className='h_m'>
           Ballerini Devs
         </Link>

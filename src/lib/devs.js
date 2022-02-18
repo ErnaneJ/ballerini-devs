@@ -1,44 +1,74 @@
 const defaultAvatar = "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-social-media-user-vector-image-icon-default-avatar-profile-icon-social-media-user-vector-image-209162840.jpg";
-const devs =  [
-  {
-    id: 0,
-    name: "Ernane Ferreira", 
-    description: "Descrição teste", 
-    avatar: defaultAvatar, 
-    office: 'Desenvolvedor',
-    nickGithub: 'ErnaneJ',
-    linkedin: '',
-    website: '',
-  },
-  {
-    id: 1,
-    name: "José Ferreira", 
-    description: "Descrição teste", 
-    avatar: defaultAvatar, 
-    office: 'Desenvolvedor',
-    nickGithub: 'ErnaneJ',
-    linkedin: '',
-    website: '',
-  },{
-    id: 2,
-    name: "José da silva", 
-    description: "Descrição teste", 
-    avatar: defaultAvatar, 
-    office: 'Desenvolvedor',
-    nickGithub: 'ErnaneJ',
-    linkedin: '',
-    website: '',
-  }
-];
 
+const getAllDevs = async (applyDevs, setLoading=null) => {
+  if(setLoading) setLoading(true)
+  return await fetch('https://api-balle-dev.herokuapp.com/dev')
+  .then(response => response.json())
+  .then(data => {
+    applyDevs(data)
+    if(setLoading) setLoading(false)
+  })
+};
+
+const addNewDev = async (dev, updateDevs) => {
+  return await fetch('https://api-balle-dev.herokuapp.com/dev', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(dev)
+  }).then(response => response.json())
+  .then(data => {
+    console.log(data);
+    getAllDevs(updateDevs);
+  })
+};
+
+const deleteDev = async (dev, updateDevs) => {
+  return await fetch(`https://api-balle-dev.herokuapp.com/dev/${dev.id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then(response => response.json())
+  .then(data => {
+    console.log(data);
+    getAllDevs(updateDevs);
+  })
+};
+
+const updateDev = async (dev, updateDevs) => {
+  return await fetch(`https://api-balle-dev.herokuapp.com/dev/${dev.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(dev)
+  }).then(response => response.json())
+  .then(data => {
+    console.log(data);
+    getAllDevs(updateDevs);
+  })
+};
 const devStructure = {
-  name: "", 
-  description: "", 
-  avatar: defaultAvatar, 
-  office: '',
-  nickGithub: '',
-  linkedin: '',
-  website: '',
+  "avatar": defaultAvatar,
+  "name": "",
+  "description": "",
+  "office": "",
+  "nick_github": "",
+  "linkedin": "",
+  "website": "",
 }
 
-module.exports = {devs, devStructure}
+const loadUserToGithub = async (dev, updateDev) => {
+  const resp = await fetch(`https://api.github.com/users/${dev.nick_github}`);
+  const respData = await resp.json();
+  updateDev({...dev, 
+    avatar: respData.avatar_url,
+    description: respData.bio,
+    name: respData.name,
+    website: respData.blog
+  });
+}
+
+module.exports = {getAllDevs, deleteDev, loadUserToGithub, updateDev, addNewDev, devStructure}

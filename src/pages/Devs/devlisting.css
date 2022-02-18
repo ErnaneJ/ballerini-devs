@@ -32,8 +32,8 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  min-width: 250px;
-  max-width: 100%;
+  min-width: 300px;
+  max-width: 300px;
 }
 .card{
   background-color: rgba(249,249,249,.14);
@@ -44,6 +44,7 @@
   flex-direction: column;
   padding: 1.5rem;
   border-radius: .5rem;
+  min-height: 420px;
 }
 .card__avatar{
   display: flex;
@@ -86,6 +87,24 @@
   color: var(--opaque-white);
   font-weight: 400;
   font-size: .85rem;
+  text-align: center;
+  display: -webkit-box;
+  max-width: 100%;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card__office{
+  margin: .5rem 0 1rem 0;
+  font-size: .75rem;
+  font-weight: bold;
+  font-family: var(--font-maven);
+  font-weight: bold;
+  background-color: var(--primary-color);
+  color: var(--opaque-white);
+  padding: .3rem 1rem;
+  border-radius: 1rem;
+  font-weight: bold;
 }
 .card__actions{
   width: 100%;
@@ -151,7 +170,11 @@
   justify-content: center;
   gap: 1rem;
   margin: 2rem 0;
+  overflow: hidden;
   overflow-y: auto;
+}
+.button__github_load{
+  margin-top: 1rem
 }
 .form__avatar{
   width: 100%;
@@ -181,14 +204,66 @@
 .form__label{
   color: var(--opaque-white);
   font-family: var(--font-maven);
+  transition: all ease .3s;
+}
+.form__label.invalid__input{
+  color: var(--danger-color)
 }
 .form__input{
   width: 100%;
   padding: .5rem .75rem;
   border-radius: .5rem;
   color: var(--color-letter);
+  transition: all ease .3s;
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.invalid__input{
+  animation: bounce 1s infinite alternate;
+  transition: all ease .3s;
+  -webkit-animation: shake 1s infinite alternate;
+}
+@keyframes shake {
+  10%, 90% {
+    transform: translateX(-1px);
+  }
+  
+  20%, 80% {
+    transform: translateX(2px);
+  }
+
+  30%, 50%, 70% {
+    transform: translateX(-4px);
+  }
+
+  40%, 60% {
+    transform: translateX(4px);
+  }
 }
 .form__inputs{
   width: 100%;
+}
+.devs__blobs_top{
+  position: absolute;
+  right:0;
+  top: -30%;
+  transform: rotate(180deg);
+}
+.devs__blobs_botton{
+  position: absolute;
+  left: -10%;
+  bottom: -20%;
+}
+
+@media (max-width: 980px){
+  .devs__blobs_top{
+    position: absolute;
+    right: 0;
+    top: -35%;
+    transform: rotate(180deg);
+  }
+  .devs__blobs_botton{
+    position: absolute;
+    left: -150px;
+    bottom: -47%;
+  }
 }

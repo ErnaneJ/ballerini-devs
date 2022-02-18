@@ -45,18 +45,22 @@
   position: absolute;
   width: 35%;
   height: 1px;
+  display: block;
   background-color: var(--primary-color);
   bottom: -1rem;
 }
+
 .ladding__right_content{
   margin-top: -100px;
 }
 .ladding__blobs_center{
+  transition: all ease .3s;
   position: absolute;
   left: 0;
   top: 0;
 }
 .ladding__blobs_botton{
+  transition: all ease .3s;
   position: absolute;
   left: -100px;
   bottom: -200px;
