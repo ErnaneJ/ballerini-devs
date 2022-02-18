@@ -30,13 +30,13 @@ Esta aplicação foi desenvolvida com as seguintes tecnologias:
 Aplicação referente ao desafio da tecnologia da semana - [React](https://reactjs.org/) - proposto na [comunidade ballerini](https://discord.gg/ballerini) (discord). Projeto simples para manipulação de demonstração de dados em modelo de [CRUD](https://developer.mozilla.org/en-US/docs/Glossary/CRUD) (Create, Read, Update, Delete) de desenvolvedores cadastrados. Na aplicação é possível qualquer pessoa cadastrar seu perfil deixando assim disponível para a comunidade.
 
 ### 📁 Features
-- [x] Recriar o projeto tomando como pase o design disponível no [Figma](https://www.figma.com/file/FX14O2BvLp8UEbXrSkdcUc/Ballerini-Devs?node-id=1763%3A20);
+- [x] Recriar o projeto de acordo com o design disponível no [Figma](https://www.figma.com/file/FX14O2BvLp8UEbXrSkdcUc/Ballerini-Devs?node-id=1763%3A20);
 - [x] Listagem de desenvolvedores cadastrados;
 - [x] Manipulação de dados e desenvolvedores:
-  - [x] Adicionar;
-  - [x] Editar;
-  - [x] Deletar;
-  - [x] Filtrar.
+  - [x] Cadastrar novo desenvolvedor;
+  - [x] Editar dados de um desenvolvedor cadastrado;
+  - [x] Deletar desenvolvedor cadastrado;
+  - [x] Filtrar desenvolvedores por termo de busca.
 
 📌 **Extra**: 
  - [x] Responsividade;
