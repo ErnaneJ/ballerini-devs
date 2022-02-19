@@ -269,3 +269,11 @@
     bottom: -47%;
   }
 }
+
+/* Form Delete */
+.secret_key__form{
+  margin-bottom: 1rem;
+}
+.doc_secret_key{
+  font-family: var(--font-maven);
+}

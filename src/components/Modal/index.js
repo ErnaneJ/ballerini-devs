@@ -7,10 +7,10 @@ const Modal = (props) => {
     props.setStatusModal(false);
   }
   const actionSaveAndCloseModal = () => {setLoading(true); setTimeout(() => {
-    props.actionSave(); 
-    setTimeout(()=> closeModal(), 300);
-    setLoading(false)
-  }, 1000);}
+    if(props.actionSave()) setTimeout(()=> closeModal(), 300);
+        setLoading(false)
+      }, 1000);
+  }
 
   if(props.statusModal) return <FadeInContent statusModal={props.statusModal} className="modal__background">
     <FadeInUpContent className="modal__container">
@@ -22,9 +22,9 @@ const Modal = (props) => {
         {props.children}
       </div>
       <div className="modal__footer">
-        <button className="button button__danger" onClick={closeModal}>{props.actionModal ?'Cancelar':'Fechar'}</button>
+        <button className="button button__danger" onClick={closeModal}>{props.actionModal ? 'Cancelar':'Fechar'}</button>
         {props.actionModal ?
-          <button className="button  button__success" onClick={actionSaveAndCloseModal}>Confirmar</button>
+          <button className="button button__success" onClick={actionSaveAndCloseModal}>Confirmar</button>
          : <></>}
       </div>
     </FadeInUpContent>

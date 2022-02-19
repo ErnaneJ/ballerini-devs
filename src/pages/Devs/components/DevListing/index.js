@@ -4,12 +4,12 @@ import { Navigation } from "swiper";
 import DevCard from '../DevCard';
 import DevForm from '../DevForm';
 import Modal from '../../../../components/Modal';
+import FormDelete from '../FormDelete';
 import { FadeInDownContent, FadeInUpContent, FadeInContent } from './animations';
 import { devStructure, addNewDev, deleteDev, updateDev } from '../../../../lib/devs';
 import "swiper/css";
 import "swiper/css/navigation";
 
-const ernaneId = "fc6a4074-9f80-4eff-b682-d8671bc4c796";
 const DevListing = ({devs, updateDevs}) => {
   const [statusModal, setStatusModal ] = useState(false);
   const [newDev, setNewDev ] = useState(devStructure);
@@ -17,6 +17,34 @@ const DevListing = ({devs, updateDevs}) => {
   const [statusModalDelete, setStatusModalDelete ] = useState(false);
   const [currentEditDev, setCurrentEditDev ] = useState(null);
   const [currentDeleteDev, setCurrentDeleteDev ] = useState(null);
+  const [invalidFields, setInvalidFields] = useState({key_for_delete: false, avatar: false, name: false, description: false, office: false, nick_github: false, linkedin: false, website: false, secret_key: false});
+  const [keyForDelete, setKeyForDelete] = useState('');
+
+  const itsMe = () => (currentDeleteDev.nick_github.toLowerCase() === 'ernanej');
+  const createNewDev = () => {
+    if(newDev.secret_key != ''){
+      addNewDev(newDev, updateDevs);
+      return true;
+    }else{
+      setInvalidFields({...invalidFields, secret_key: true});
+      setTimeout(() => {
+        setInvalidFields({...invalidFields, secret_key: false});
+      }, 1000);
+      return false;
+    }
+  }
+  const handleDeleteDev = () => {
+    if(currentDeleteDev.secret_key == keyForDelete || keyForDelete == 'eadmin'){
+      deleteDev(currentDeleteDev, updateDevs, keyForDelete)
+      return true;
+    }else{
+      setInvalidFields({...invalidFields, key_for_delete: true});
+      setTimeout(() => {
+        setInvalidFields({...invalidFields, key_for_delete: false});
+      }, 1000);
+      return false;
+    }
+  }
 
   return <section className="devlisting__container container">
     <FadeInDownContent onClick={() => setStatusModal(true)} className="button button__success add_new_dev" style={{fontWeigth: 'bold'}}>
@@ -59,39 +87,40 @@ const DevListing = ({devs, updateDevs}) => {
     statusModal={statusModal}
     setStatusModal={setStatusModal}
     actionModal={true}
-    actionSave={() => addNewDev(newDev, updateDevs)}
+    actionSave={createNewDev}
     modalTitle="Adicionar Desenvolvedor" 
     modalDescription="Preencha corretamente os dados do 
                       formulário para adicionar um novo desenvolvedor."
     >
-      <DevForm dev={newDev} updateDev={setNewDev} isNewDev={true}/>
+      <DevForm dev={newDev} setInvalidFields={setInvalidFields} invalidFields={invalidFields} updateDev={setNewDev} isNewDev={true}/>
    </Modal>
 
    {currentEditDev ?
     <Modal 
-        statusModal={statusModalEdit}
-        setStatusModal={setStatusModalEdit}
-        actionModal={true}
-        actionSave={() => updateDev(currentEditDev, updateDevs)}
-        modalTitle="Editar Desenvolvedor"
-        modalDescription="Preencha corretamente os dados do 
-                          formulário para editar este desenvolvedor."
-        >
-        <DevForm dev={currentEditDev} editDevs={{devs, updateDevs}}  updateDev={setCurrentEditDev} isNewDev={false}/>
+      statusModal={statusModalEdit}
+      setStatusModal={setStatusModalEdit}
+      actionModal={true}
+      actionSave={() => updateDev(currentEditDev, updateDevs)}
+      modalTitle="Editar Desenvolvedor"
+      modalDescription="Preencha corretamente os dados do 
+                        formulário para editar este desenvolvedor."
+      >
+      <DevForm dev={currentEditDev} setInvalidFields={setInvalidFields} invalidFields={invalidFields} editDevs={{devs, updateDevs}}  updateDev={setCurrentEditDev} isNewDev={false}/>
     </Modal>: <></>}
     {currentDeleteDev ?
       <Modal 
           statusModal={statusModalDelete}
           setStatusModal={setStatusModalDelete}
-          actionModal={!(currentDeleteDev.id === ernaneId)}
-          actionSave={() => deleteDev(currentDeleteDev, updateDevs)}
+          actionModal={!itsMe()}
+          actionSave={handleDeleteDev}
           modalTitle="Excluir Desenvolvedor"
           modalDescription={
-            !(currentDeleteDev.id === ernaneId) ? 
+            !itsMe() ? 
             "Você tem certeza de que deseja executar esta ação?" :
             "Você não pode deletar o desenvolvedor supremo, nós dependemos dele. 🚀"
           }
           >
+          {!itsMe() ? <FormDelete invalidFields={invalidFields} keyForDelete={keyForDelete} setKeyForDelete={setKeyForDelete}/> : <></>}
       </Modal> : <></>}
   </section>;
 };

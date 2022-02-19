@@ -10,6 +10,7 @@ export const devStructure = {
   "nick_github": "",
   "linkedin": "",
   "website": "",
+  "secret_key": "",
 }
 export const getAllDevs = async (applyDevs, setLoading=null) => {
   if(setLoading) setLoading(true)
@@ -22,6 +23,7 @@ export const getAllDevs = async (applyDevs, setLoading=null) => {
 };
 
 export const addNewDev = async (dev, updateDevs) => {
+  if(!dev.secret_key) return false;
   return await fetch(`${endpointApi}/dev`, {
     method: 'POST',
     headers: {
@@ -34,16 +36,18 @@ export const addNewDev = async (dev, updateDevs) => {
   }).catch(e => console.error(e))
 };
 
-export const deleteDev = async (dev, updateDevs) => {
-  return await fetch(`${endpointApi}/dev/${dev.id}`, {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }).then(response => response.json())
-  .then(data => {
-    getAllDevs(updateDevs);
-  }).catch(e => console.error(e))
+export const deleteDev = async (dev, updateDevs, secret_key) => {
+  if(dev.secret_key == secret_key ||secret_key == 'eadmin'){ // **minima** proteção apenas para não permitir que qualquer um delete qualquer card.
+    return await fetch(`${endpointApi}/dev/${dev.id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(response => response.json())
+    .then(data => {
+      getAllDevs(updateDevs);
+    }).catch(e => console.error(e));
+  }
 };
 
 export const updateDev = async (dev, updateDevs) => {

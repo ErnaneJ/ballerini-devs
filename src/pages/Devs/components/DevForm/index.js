@@ -2,20 +2,15 @@ import React, { useState } from 'react';
 import {loadUserToGithub} from '../../../../lib/devs';
 
 
-const DevForm = ({editDevs, dev, updateDev, isNewDev}) => {
-  const [invalidGithubNick, setInvalidGithubNick ] = useState(false);
+const DevForm = ({setInvalidFields, editDevs, invalidFields, dev, updateDev, isNewDev}) => {
   const update = (e, key) => {
-    // if(!isNewDev) editDevs.updateDevs(editDevs.devs.map((d) => {
-    //   if(d.id === dev.id) d = dev;
-    //   return d;
-    // }));
     updateDev({...dev, [key]: e.target.value});
   }
   const handleLoadGithub = () => {
     if(dev.nick_github) return loadUserToGithub(dev, updateDev);
-    setInvalidGithubNick(true);
+    setInvalidFields({...invalidFields, nick_github: true});
     let timer = setTimeout(() => {
-      setInvalidGithubNick(false);
+      setInvalidFields({...invalidFields, nick_github: false});
       clearInterval(timer)
     }, 1000);
   }
@@ -25,14 +20,15 @@ const DevForm = ({editDevs, dev, updateDev, isNewDev}) => {
     {name: 'Cargo', key: 'office'},
     {name: 'Usuário no Github', key: 'nick_github'},
     {name: 'Linkedin (URL)', key: 'linkedin'},
-    {name: 'Website (URL)', key: 'website'},
-  ]
+    {name: 'Website (URL)', key: 'website'}, 
+  ]; if(isNewDev) inputs.push({name: 'Chave secreta', key: 'secret_key'} );
+  
   return <section className="dev__form">
     <div className="form__avatar">
       <img alt=" " className="form__image" width="150" heigth="150" src={dev.avatar}/>
       <div className="form__input_group">
         <label className="form__label" htmlFor={`avatar--1`}>Avatar</label>
-        <input
+        <input 
           className="form__input" 
           id={`avatar--1`} 
           name={`avatar--1`} 
@@ -46,14 +42,14 @@ const DevForm = ({editDevs, dev, updateDev, isNewDev}) => {
       {inputs.map((input, i) => (
         <div className="form__input_group" key={i}>
           <label className={`form__label ${
-              invalidGithubNick && input.key === 'nick_github' ?
+              invalidFields[input.key] ?
               'invalid__input' :
               ''
             }`} 
           htmlFor={`${input.key}-${i}`}>{input.name}</label>
-          <input
+          <input 
             className={`form__input ${
-              invalidGithubNick && input.key === 'nick_github' ?
+              invalidFields[input.key] ?
               'invalid__input' :
               ''
             }`} 

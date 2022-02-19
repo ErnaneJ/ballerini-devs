@@ -44,7 +44,7 @@ const Header = ({devs, isNotLanding, setFilteredDevs}) => {
       {isNotLanding ?
         <div className="header__seachable_devs">
           <i className="fa-solid fa-magnifying-glass seachable_icon"></i>
-          <input type="text" placeholder="Buscar.." className="input__seachable" onChange={filterDevs}/>
+          <input  type="text" placeholder="Buscar.." className="input__seachable" onChange={filterDevs}/>
         </div> : <div></div>
       }
     </FadeInDownContent>
